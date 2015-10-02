@@ -1,5 +1,5 @@
 <?php
-require("/etc/upload.conf");
+require("/etc/secure_attachment.conf");
 require($conf['absolute_path_upload']."include_languages.php");
 
 $fichier = htmlspecialchars($_GET['f']);

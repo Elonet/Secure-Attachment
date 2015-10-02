@@ -36,7 +36,7 @@ class UploadHandler
 	protected $error_messages = array();
     protected $image_objects = array();
     function __construct($options = null, $initialize = true, $error_messages = null) {
-		require("/etc/upload.conf");
+		require("/etc/secure_attachment.conf");
 		include($conf['absolute_path_upload']."include_languages.php");
 		//Found user langugage
 		$lang = !empty($_SERVER['HTTP_ACCEPT_LANGUAGE']) ? strtok(strip_tags($_SERVER['HTTP_ACCEPT_LANGUAGE']), ',') : '';
@@ -1143,7 +1143,7 @@ class UploadHandler
 		session_start();
 		$_SESSION['key']=$chiffre_data['key'];
 		$_SESSION['iv']=$chiffre_data['iv'];
-		require("/etc/upload.conf");
+		require("/etc/secure_attachment.conf");
 		$log = fopen($conf['name_folder_log']."log_attachment.log", "a");
 		fwrite($log, "UPLOAD | ".$_SERVER['REMOTE_ADDR']." | ".date("l j F Y, G:i")." | ".$_REQUEST['folder']." | ".$file->name." | ".formatSize($file_size)." | ".$type."\n");
 		fclose($log);

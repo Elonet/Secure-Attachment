@@ -1,5 +1,5 @@
 <?php
-require("/etc/upload.conf");
+require("/etc/secure_attachment.conf");
 require("/opt/elonet/alert_module.php");
 require($conf['absolute_path_upload']."include_languages.php");
 

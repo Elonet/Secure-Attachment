@@ -1,6 +1,6 @@
 <?php
 date_default_timezone_set('Europe/Berlin'); 
-require("/etc/upload.conf");
+require("/etc/secure_attachment.conf");
 require($conf['absolute_path_upload']."include_languages.php");
 $file = htmlspecialchars($_GET['file']);
 $password=htmlspecialchars($_GET['psw']);
@@ -31,7 +31,7 @@ function check_only($file,$login){
 	}
 }
 function download_file($fullPath,$folder_tmp,$password,$ip,$mail){
-	require("/etc/upload.conf");
+	require("/etc/secure_attachment.conf");
 	require($conf['absolute_path_upload']."include_languages.php");
 	$lang=htmlspecialchars($_GET['l']);
 	$key=htmlspecialchars($_GET['key']);

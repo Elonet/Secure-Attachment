@@ -1,5 +1,5 @@
 <?php
-require("/etc/upload.conf");
+require("/etc/secure_attachment.conf");
 $vocables = array(
    "fr" => array(
 	"disclaimer"=>"Clauses d'utilisation",

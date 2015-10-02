@@ -23,7 +23,7 @@ chrome.webRequest.onBeforeRequest.addListener(function(details){
 			mails = mails.join(",");
 			var data = "mail="+mails+"&subject="+details.requestBody.formData['subject']+"&id="+id+"&fm="+details.requestBody.formData['from'];
 			//récup url dans le storage
-			var url = "https://upload.elonet.fr:8443/attachment/managed_attachment.php";
+			var url = "https://[your-upload_url]/managed_attachment.php";
 			var xhr = new XMLHttpRequest();
 			xhr.open('POST', url, true);
 			xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");

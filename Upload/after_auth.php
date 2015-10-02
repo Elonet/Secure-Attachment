@@ -7,7 +7,7 @@
 <![endif]-->
 <?php 
 require("include_languages.php");
-require("/etc/upload.conf");
+require("/etc/secure_attachment.conf");
 header('x-ua-compatible: ie=edge');
 /* Définition de la langue */
 	$lang = substr($_SERVER['HTTP_ACCEPT_LANGUAGE'], 0, 2);

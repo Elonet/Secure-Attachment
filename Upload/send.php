@@ -1,6 +1,6 @@
 <?php
 date_default_timezone_set('Europe/Berlin');
-require("/etc/upload.conf");
+require("/etc/secure_attachment.conf");
 require("include_languages.php");
 $folder = htmlspecialchars(@$_POST['f']);
 $frommail = htmlspecialchars(@$_POST['fm']);

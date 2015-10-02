@@ -54,8 +54,8 @@ if(top.document == document) {
         storage.get("url", function(items){
             var url = items.url;
             if (typeof items.url === "undefined") {
-                storage.set({"url": "https://upload.elonet.fr:8443/attachment/"});
-                url = "https://upload.elonet.fr:8443/attachment/";
+                storage.set({"url": "https://[your-upload_url]/"});
+                url = "https://[your-upload_url]/";
             }
             addData("elonet_url", url);
         });

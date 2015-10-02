@@ -1,6 +1,6 @@
 <?php
 date_default_timezone_set('Europe/Berlin');
-require("/etc/upload.conf");
+require("/etc/secure_attachment.conf");
 require($conf['absolute_path_upload']."include_languages.php");
 $phone = htmlspecialchars($_POST['p']);
 $message = htmlspecialchars($_POST['m']);

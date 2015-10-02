@@ -1,5 +1,5 @@
 <?php
-	require("/etc/upload.conf");
+	require("/etc/secure_attachment.conf");
 	$dirname=$_REQUEST['folder'];
 	$login=$_REQUEST['id'];
 	$password=$_REQUEST['psw'];
