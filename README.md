@@ -1,7 +1,7 @@
 <h1>Secure attachment</h1>
 
 <h2>Documentation</h2>
-<a href="https://elonet.fr/tech/doku.php/open-source_solutions/secure_attachmentsr" target="_blank">General and setup documentation</a>
+<a href="https://elonet.fr/tech/doku.php/open-source_solutions/secure_attachments" target="_blank">General and setup documentation</a>
 
 <h2>Contributing</h2>
 <p><strong>Bug fixes</strong> and <strong>new features</strong> can be proposed using <a href="https://github.com/Elonet/Secure-Attachment/pulls" target="_blank">pull requests</a>.
