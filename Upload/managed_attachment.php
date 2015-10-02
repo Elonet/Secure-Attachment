@@ -44,7 +44,7 @@ $tmp_folder = htmlspecialchars($_POST['id']);
 
 $mail = explode(",",$tmp_mail);
 //Lecture et vérification du lien
-if (($handle = fopen($conf['name_folder_upload']."url_attachment.log", "r")) !== FALSE) {
+if (($handle = fopen($conf['name_folder_log']."url_attachment.log", "r")) !== FALSE) {
 	while (($data = fgets($handle)) !== FALSE) {
 		$explode_data = explode (" | ",$data);
 		if($explode_data[0]==$_POST['id']){
@@ -61,15 +61,15 @@ if (($handle = fopen($conf['name_folder_upload']."url_attachment.log", "r")) !==
 $mail_arr = array();
 $fol = $folder;
 	if($fol != "") {
-		if (is_dir("".$conf['absolute_path']."download/attachment/files/".$fol."/")){
-			if (($handle = fopen("".$conf['absolute_path']."download/attachment/files/".$fol."/mail.json", "w")) !== FALSE) {
+		if (is_dir($conf['absolute_path_download']."files/".$fol."/")){
+			if (($handle = fopen($conf['absolute_path_download']."files/".$fol."/mail.json", "w")) !== FALSE) {
 				foreach ($mail as $key) {
 					if($key != ""){
 						$mail_arr[] = $key;
 						//Generation du htpasswd dans le répertoire crée
 						$rand_motdepasse=rand_str(5);
 						$htpasswd=htpasswd($rand_motdepasse);
-						$fichier_mot_de_passe = fopen("".$conf['absolute_path']."download/attachment/files/$fol/.htpasswd","a");
+						$fichier_mot_de_passe = fopen($conf['absolute_path_download']."files/$fol/.htpasswd","a");
 						fputs($fichier_mot_de_passe, $key.":".$htpasswd."\n" );
 						fclose($fichier_mot_de_passe);
 						

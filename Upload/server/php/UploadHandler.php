@@ -37,7 +37,7 @@ class UploadHandler
     protected $image_objects = array();
     function __construct($options = null, $initialize = true, $error_messages = null) {
 		require("/etc/upload.conf");
-		include($conf['absolute_path']."/attachment/include_languages.php");
+		include($conf['absolute_path_upload']."include_languages.php");
 		//Found user langugage
 		$lang = !empty($_SERVER['HTTP_ACCEPT_LANGUAGE']) ? strtok(strip_tags($_SERVER['HTTP_ACCEPT_LANGUAGE']), ',') : '';
 		$lang = substr($lang, 0,2);
@@ -59,8 +59,8 @@ class UploadHandler
 			$lang="en";
 		}
 		if(isset($_REQUEST['folder']) && $_REQUEST['folder']!="") {
-			$folder = $conf['absolute_path'].'download/attachment/files/'.$_REQUEST['folder'].'/';
-			$folder2 = $conf['url_redirection_download'].'attachment/files/'.$_REQUEST['folder'].'/';
+			$folder = $conf['absolute_path_download'].'files/'.$_REQUEST['folder'].'/';
+			$folder2 = $conf['url_redirection_download'].'files/'.$_REQUEST['folder'].'/';
 			$name_dir = $_REQUEST['folder'];
 		}
 		else {
@@ -435,7 +435,7 @@ class UploadHandler
         }
 		require("/etc/attachment.conf");
 		$tmp_folder = trim(htmlspecialchars($_REQUEST['folder']));
-		$dirname = $conf['absolute_path']."download_attachment/files/".$_REQUEST['folder']."/";
+		$dirname = $conf['absolute_path_download']."files/".$_REQUEST['folder']."/";
 		if(is_dir($dirname)) {
 			$dir = opendir($dirname);
 			$global_size = 0;
@@ -1144,7 +1144,7 @@ class UploadHandler
 		$_SESSION['key']=$chiffre_data['key'];
 		$_SESSION['iv']=$chiffre_data['iv'];
 		require("/etc/upload.conf");
-		$log = fopen($conf['name_folder_upload']."log_attachment.log", "a");
+		$log = fopen($conf['name_folder_log']."log_attachment.log", "a");
 		fwrite($log, "UPLOAD | ".$_SERVER['REMOTE_ADDR']." | ".date("l j F Y, G:i")." | ".$_REQUEST['folder']." | ".$file->name." | ".formatSize($file_size)." | ".$type."\n");
 		fclose($log);
 		openlog("uploadLog", 0, LOG_LOCAL0);

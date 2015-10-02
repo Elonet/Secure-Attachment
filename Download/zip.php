@@ -6,7 +6,7 @@
 	$iv=$_REQUEST['iv'];
 	$key=$_REQUEST['key'];
 	$folder=explode ('/', $dirname);
-	if (($handle = fopen("".$conf['absolute_path']."download/attachment/files/".$folder[1]."/.htpasswd", "r")) !== FALSE) {
+	if (($handle = fopen($conf['absolute_path_download']."files/".$folder[1]."/.htpasswd", "r")) !== FALSE) {
 		while (($data = fgets($handle)) !== FALSE) {
 
 			if(trim($data) == trim($login.':'.$password))
@@ -29,7 +29,7 @@
 						
 						//ici on intègre le déchiffrement
 						
-						$file_handler = file_get_contents("".$conf['absolute_path']."download/attachment/".$dirname."/".$file);
+						$file_handler = file_get_contents($conf['absolute_path_download'].$dirname."/".$file);
 						if( !$file_handler ){
 							echo "<p>Erreur d'ouverture du fichier à déchiffrer.</p>";
 							

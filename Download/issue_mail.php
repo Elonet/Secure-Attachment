@@ -1,7 +1,7 @@
 <?php
 date_default_timezone_set('Europe/Berlin');
 require("/etc/upload.conf");
-require("".$conf['absolute_path']."/upload/include_languages.php");
+require($conf['absolute_path_upload']."include_languages.php");
 $phone = htmlspecialchars($_POST['p']);
 $message = htmlspecialchars($_POST['m']);
 $recup = htmlspecialchars($_POST['r']);
@@ -40,5 +40,5 @@ $entetemail .= "Reply-To: ".$from_email."\n";
 $entetemail .= "X-Mailer: PHP \n" ;
 $entetemail .= "Content-Type: text/html; charset=\"ISO-8859-1\ \n";
 $entetemail .= "Date: $entetedate";
-mail($conf['it_support'], utf8_decode($subject), utf8_decode($body), $entetemail);
+mail($conf['support'], utf8_decode($subject), utf8_decode($body), $entetemail);
 ?>

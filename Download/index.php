@@ -9,7 +9,7 @@ if( $conf['download_auth'] == 0 ){
 <html>
 <head>
 <?php
-require("".$conf['absolute_path']."/upload/attachment/include_languages.php");
+require($conf['absolute_path_upload']."include_languages.php");
 header('x-ua-compatible: ie=edge');
 /* Définition de la langue */
 	$lang = substr($_SERVER['HTTP_ACCEPT_LANGUAGE'], 0, 2);
@@ -59,7 +59,7 @@ header('x-ua-compatible: ie=edge');
 <body>
 	<center>
 		<div id="header" style="width:100%;text-align: center;">
-			<img alt="Elonet" width="220" src="<?php echo $conf['img_email']; ?>" border=0/><br/>
+			<img alt="Elonet" width="220" src="<?php echo $conf['img_logo']; ?>" border=0/><br/>
 			<font size=4 face="Verdana" style="margin-left:15px;"><?php echo $conf['title_download']; ?></font>
 		</div>
 		<div class="container-fluid" style="margin-top:40px;margin-left:30px;">

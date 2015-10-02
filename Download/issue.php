@@ -3,7 +3,7 @@
 <head>
 <?php 
 require("/etc/upload.conf");
-require("".$conf['absolute_path']."/upload/include_languages.php");
+require($conf['absolute_path_upload']."include_languages.php");
 header('x-ua-compatible: ie=edge');
 /* Définition de la langue */
 	$lang = substr($_SERVER['HTTP_ACCEPT_LANGUAGE'], 0, 2);
@@ -58,7 +58,7 @@ input[type="textarea"]{color: #000000; font-family: Verdana; font-weight: bold; 
 <body>
 <div class="container">
 	<div id="header" style="width:100%;text-align: center;">
-		<img alt="Elonet" width="220" src="<?php echo $conf['img_email']; ?>" border=0/><br/>
+		<img alt="Elonet" width="220" src="<?php echo $conf['img_logo']; ?>" border=0/><br/>
 		<font size=4 face="Verdana" style="margin-left:15px;"><?php echo $conf['title']; ?></font>
 	</div>
 	<div style="height:60px;"></div>

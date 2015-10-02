@@ -1,14 +1,14 @@
 <?php
 date_default_timezone_set('Europe/Berlin'); 
 require("/etc/upload.conf");
-require("".$conf['absolute_path']."/upload/attachment/include_languages.php");
+require($conf['absolute_path_upload']."include_languages.php");
 $file = htmlspecialchars($_GET['file']);
 $password=htmlspecialchars($_GET['psw']);
 $lang=htmlspecialchars($_GET['l']);
 $ip=htmlspecialchars($_GET['ip']);
 $mail=htmlspecialchars($_GET['mail']);
 $folder_tmp=explode ("/",$file);
-if (($handle = fopen($conf['absolute_path']."download/attachment/files/".$folder_tmp[1]."/.htpasswd", "r")) !== FALSE) {
+if (($handle = fopen($conf['absolute_path_download']."files/".$folder_tmp[1]."/.htpasswd", "r")) !== FALSE) {
 	while (($data = fgets($handle)) !== FALSE) {
 		if($data == $mail.':'.$password."\n" && !check_only($file,$mail))
 			download_file($file,$folder_tmp,$password,$ip,$mail);
@@ -32,7 +32,7 @@ function check_only($file,$login){
 }
 function download_file($fullPath,$folder_tmp,$password,$ip,$mail){
 	require("/etc/upload.conf");
-	require($conf['absolute_path']."/upload/attachment/include_languages.php");
+	require($conf['absolute_path_upload']."include_languages.php");
 	$lang=htmlspecialchars($_GET['l']);
 	$key=htmlspecialchars($_GET['key']);
 	$iv=htmlspecialchars($_GET['iv']);
@@ -102,13 +102,13 @@ function download_file($fullPath,$folder_tmp,$password,$ip,$mail){
 		flush();
 		readfile( $fullPath );
 		//Ecriture des logs
-		$log = fopen($conf['name_folder_upload'] ."log_download.log", "a");
+		$log = fopen($conf['name_folder_log'] ."log_download.log", "a");
 		fwrite($log, "DOWNLOAD | ".$_SERVER['REMOTE_ADDR']." | ".date("l j F Y, G:i")." | ".$mail." | ".$fullPath." | "."\n");
 		fclose($log);
 		$date = date("Y-m-d H:i:s");
 		//Gestion du Notify first download + only one download
 		$update = "";
-		if (($handle = fopen($conf['name_folder_upload'] ."log_attachment.log", "r")) !== FALSE) {
+		if (($handle = fopen($conf['name_folder_log'] ."log_attachment.log", "r")) !== FALSE) {
 			while (($data = fgets($handle)) !== FALSE) {
 				$explode_data = explode (" | ",$data);
 				//Récupération de l'email FROM dans les logs UPLOAD
@@ -120,7 +120,7 @@ function download_file($fullPath,$folder_tmp,$password,$ip,$mail){
 						$subject=$vocables["$lang"]["download_mail_1"];
 						$body="<center><img src='".$conf['img_for_email']."'/></center><br/><br/>".$vocables["$lang"]["invite_receiver_mail_body_1"]."<br/><br/>"
 						.$vocables["$lang"]["download_mail_2"].$folder_tmp[2].$vocables["$lang"]["download_mail_3"]." ".$mail." via ".$ip." le ".$date."<br/><br/>"
-						.$vocables["$lang"]["download_mail_4"].$conf['name_folder_upload']."<br/><br/>"
+						.$vocables["$lang"]["download_mail_4"].$conf['name_folder_log']."<br/><br/>"
 						.$vocables["$lang"]["invite_author_mail_body_7"];
 						$from_email  = $conf['from_email'];
 						$entetedate  = "Date: ".date("l j F Y, G:i +0200")."\n";
@@ -135,8 +135,8 @@ function download_file($fullPath,$folder_tmp,$password,$ip,$mail){
 					} else {
 						$subject="Your file has just been downloaded";
 						$body="<center><img src='".$conf['img_for_email']."'/></center><br/><br/>".$vocables["$lang"]["invite_receiver_mail_body_1"]."<br/><br/>"
-						.$vocables["$lang"]["download_mail_6"].$conf['name_folder_download']."<br/><br/>"
-						.$vocables["$lang"]["download_mail_4"].$conf['name_folder_upload'].$vocables["$lang"]["download_mail_5"]."<br/><br/>"
+						.$vocables["$lang"]["download_mail_6"]."<br/><br/>"
+						.$vocables["$lang"]["download_mail_4"].$conf['name_folder_log'].$vocables["$lang"]["download_mail_5"]."<br/><br/>"
 						.$vocables["$lang"]["invite_author_mail_body_7"];
 						$from_email  = $conf['from_email'];
 						$entetedate  = "Date: ".date("l j F Y, G:i +0200")."\n";
@@ -173,7 +173,7 @@ function download_file($fullPath,$folder_tmp,$password,$ip,$mail){
 			}
 			fclose($handle);
 		}
-			$handle2 = fopen($conf['name_folder_upload'] ."log_attachment.log", "w+");
+			$handle2 = fopen($conf['name_folder_log'] ."log_attachment.log", "w+");
 			fwrite($handle2,$update);
 			fclose($handle2);
 			

@@ -3,7 +3,7 @@
 <head>
 <?php
 require("/etc/upload.conf");
-require("".$conf['absolute_path']."/upload/attachment/include_languages.php");
+require($conf['absolute_path_upload']."include_languages.php");
 header('x-ua-compatible: ie=edge');
 /* Définition de la langue */
 	$lang = substr($_SERVER['HTTP_ACCEPT_LANGUAGE'], 0, 2);
@@ -30,13 +30,13 @@ $mail = htmlspecialchars($_GET['mail']);
 $password=htmlspecialchars($_GET['psw']);
 $logpas = false;
 $onlyone = false;
-if (($handle = fopen($conf['name_folder_upload']."url_attachment.log", "r")) !== FALSE) {
+if (($handle = fopen($conf['name_folder_log']."url_attachment.log", "r")) !== FALSE) {
 	while (($data = fgets($handle)) !== FALSE) {
 		$explode_data = explode (" | ",$data);
 		if($explode_data[0]==$folder){
 			$folder = htmlspecialchars($explode_data[1]);
 			$dirname='files/'.$folder;
-			if (($handle = fopen("".$conf['absolute_path']."download_attachment/files/".$folder."/.htpasswd", "r")) !== FALSE) {
+			if (($handle = fopen($conf['absolute_path_download']."files/".$folder."/.htpasswd", "r")) !== FALSE) {
 				while (($data = fgets($handle)) !== FALSE) {
 					if($data == $mail.':'.$password."\n")
 						$logpas = true;
@@ -138,15 +138,15 @@ closelog();
 	<div class="left" align="left" style="margin-top:-40px;margin-left:30px;">
 	</div>
 	<div id="header" style="width:100%;text-align: center;">
-		<img alt="Elonet" width="220" src="<?php echo $conf['img_email']; ?>" border=0/><br/>
+		<img alt="Elonet" width="220" src="<?php echo $conf['img_logo']; ?>" border=0/><br/>
 		<font size=4 face="Verdana" style="margin-left:15px;"><?php echo $conf['title_download']; ?></font>
 	</div>
 	<div style="height:30px;"></div>
 	<?php
 		if($logpas == true):
 	?>
-	<?php if( file_exists($conf['absolute_path']."download/attachment/files/".$folder."/.messenger")){
-		$messenger = file_get_contents($conf['absolute_path']."download/attachment/files/".$folder."/.messenger");
+	<?php if( file_exists($conf['absolute_path_download']."files/".$folder."/.messenger")){
+		$messenger = file_get_contents($conf['absolute_path_download']."files/".$folder."/.messenger");
 		if($messenger != "" ||$messenger != NULL) {
 			echo "<div style='width:80%;margin:0px auto;'><p>".$vocables["$lang"]["message_from"].$mail." :</p><p id='message'>".$messenger."</p></div>";
 		}
@@ -195,7 +195,7 @@ closelog();
 					</td>
 			</tr>
 		<?php
-		if (($handle = fopen($conf['name_folder_upload']."log_attachment.log", "r")) !== FALSE) {
+		if (($handle = fopen($conf['name_folder_log']."log_attachment.log", "r")) !== FALSE) {
 			while (($data = fgets($handle)) !== FALSE) {
 				$explode_data = explode (" | ",$data);
 				if($explode_data[4].'/'.$explode_data[5] == $folder.'/'.$file && $explode_data[7] == "Only One : true"):?>
@@ -276,13 +276,13 @@ closelog();
 		</span>
 		<!-- penser à modifier la ligne d'affichage et créer une entré dans include_languages -->
 		<?php 
-			$mail_author = file_get_contents($conf['absolute_path']."download_attachment/files/".$folder."/.sender");
+			$mail_author = file_get_contents($conf['absolute_path_download']."files/".$folder."/.sender");
 			@session_start();
 			$log = $mail;
 			if( $mail_author != $log ){ 
 		?>
 				<span class="btn btn-primary" id="upload">
-					<a href="<?php echo $conf['url_redirection_upload']; ?>attachment/after_auth.php?fm=<?php echo $mail_author; ?>&folder=<?php echo $folder; ?>&log=<?php echo $log;?>" style="color:white;text-decoration:none;"><?php echo $vocables["$lang"]["upload_redirect"]; ?></a>
+					<a href="<?php echo $conf['url_redirection_upload']; ?>after_auth.php?fm=<?php echo $mail_author; ?>&folder=<?php echo $folder; ?>&log=<?php echo $log;?>" style="color:white;text-decoration:none;"><?php echo $vocables["$lang"]["upload_redirect"]; ?></a>
 				</span>
 		<?php 
 			}

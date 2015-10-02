@@ -1,7 +1,7 @@
 <?php
 require("/etc/upload.conf");
 require("/opt/elonet/alert_module.php");
-require("".$conf['absolute_path']."/upload/attachment/include_languages.php");
+require($conf['absolute_path_upload']."include_languages.php");
 
 function get_mails($folder){
     require("/etc/attachment.conf");  
@@ -9,7 +9,7 @@ function get_mails($folder){
 
 	//mettre ici une fonction pour verifier $folder ( != "*.*")
 
-        $htpwd = file_get_contents($conf['absolute_path']."download_attachment/files/".$folder."/.htpasswd");
+        $htpwd = file_get_contents($conf['absolute_path_download']."files/".$folder."/.htpasswd");
         $htpwd_lines = explode("\n", $htpwd );
         foreach( $htpwd_lines as $line ){
                 $mail = explode(":", $line );
@@ -51,12 +51,12 @@ if( $_GET['mail'] ){
 	$address = $_GET['mail'];	
 	$dirname = $_GET['folder'];
 	
-	if (($handle = fopen($conf['name_folder_upload']."url_attachment.log", "r")) !== FALSE) {
+	if (($handle = fopen($conf['name_folder_log']."url_attachment.log", "r")) !== FALSE) {
 		while (($data = fgets($handle)) !== FALSE) {
 			$explode_data = explode (" | ",$data);
 			if($explode_data[0]==$dirname){
 				$tmp_folder = htmlspecialchars($explode_data[1]);
-				if (($handle = fopen($conf['absolute_path']."download_attachment/files/".$tmp_folder."/.htpasswd", "r")) !== FALSE) {
+				if (($handle = fopen($conf['absolute_path_download']."files/".$tmp_folder."/.htpasswd", "r")) !== FALSE) {
 					while (($data = fgets($handle)) !== FALSE) {
 						$tmp_data = explode(":",$data);
 						if($tmp_data[0] == $address) {
@@ -77,9 +77,9 @@ if( $_GET['mail'] ){
 	
 	//Listing des fichiers dans un tableau
 	$c_file=0;
-	$dir = opendir($conf['absolute_path']."download/attachment/files/$folder/");
+	$dir = opendir($conf['absolute_path_download']."files/$folder/");
 	while($file = readdir($dir)) {
-		if($file != '.' && $file != '..' && $file != '...' && $file != 'index.php' && !is_dir($conf['absolute_path']."download/attachment/files/$folder/".$file) && $file != 'all_files_list.zip' && $file != '.htaccess' && $file != '.htpasswd' && $file != '.sender' && $file != '.messenger' && $file != 'mail.json') {
+		if($file != '.' && $file != '..' && $file != '...' && $file != 'index.php' && !is_dir($conf['absolute_path_download']."files/$folder/".$file) && $file != 'all_files_list.zip' && $file != '.htaccess' && $file != '.htpasswd' && $file != '.sender' && $file != '.messenger' && $file != 'mail.json') {
 			$file_list[$c_file] = $file;
 			$c_file++;
 		}
@@ -108,7 +108,7 @@ if( $_GET['mail'] ){
 	$entetemail .= "X-Mailer: PHP \n" ;
 	$entetemail .= "Content-Type: text/html; charset=\"ISO-8859-1\ \n";
 	$entetemail .= "Date: $entetedate";
-	$body = "<center><img src='".$conf['img_for_email']."'/></center><br/><a href=\"".$conf['url_redirection_download']."attachment/after_auth.php?id=".$_GET['id']."&psw=".trim($password)."&folder=".$folder."&iv=".$_GET['iv']."&key=".$_GET['key']."&mail=".$address."\">".$vocables["$lang"]['attachment_mail']."</a>";
+	$body = "<center><img src='".$conf['img_for_email']."'/></center><br/><a href=\"".$conf['url_redirection_download']."after_auth.php?id=".$_GET['id']."&psw=".trim($password)."&folder=".$folder."&iv=".$_GET['iv']."&key=".$_GET['key']."&mail=".$address."\">".$vocables["$lang"]['attachment_mail']."</a>";
 	$body .= "<br/><table cellspacing='0' cellpadding='0'><tr>";
 	$body .= "<td align='left'  width='100%'>( ".$vocables["$lang"]["attachment_available"]." ";
 	foreach($file_list as $key2 => $value2) {
