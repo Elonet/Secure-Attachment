@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<head><title>Secure attachment by Elonet</title>
+    <link href="css/bootstrap.min.css" rel="stylesheet"></link>
+    <link href="css/bootstrap-responsive.min.css" rel="stylesheet"></link>
+    <link href="css/popup.css" rel="stylesheet" type="text/css"></link>
+    <script src='js/lib/jquery-1.9.1.min.js' type='text/javascript'></script>
+    <script src='js/lib/jquery.sortable.min.js' type='text/javascript'></script>
+	    <script src='js/lib/jquery.md5.js' type='text/javascript'></script>
+    <script src="js/popup.js"></script>
+</head>
+
+<body id="top">
+	<div class="container-fluid">
+        <center>
+			<img src="https://elonet.fr/img/SecureIconOn38_white.png" alt="Secure Attachment" style="float: left;margin-left: -10px;margin-top: 6px;"/>
+            <a href="https://elonet.fr/" target="_blank"><img id="cloudy_top_icon" src="https://elonet.fr/img/logo/logo.png" style="height:80px;float:none;margin-left:-25px;" /></a>
+		</center>
+    </div>
+	<div style="height:40px"></div>
+    <label class="checkbox" style="display:none">
+        <input type="checkbox" id="elonet_service" data-val="false" value="nothing" style="display:none;" />Enable this service <br/> <i>you will need to refresh the Gmail web page if you disable</i>
+    </label>
+	<div id="left" style="width:100%"></div>
+	<div style=" clear: both;">
+		<b id="setting"></b>
+		<br/>
+		<span id="URL"></span>
+	</div>
+	<input type="text" id="elonet_url" name="elonet_url" style="width:100%;" />
+	<br/>
+	<br/>
+	<div class="row" id="mail_checker" style="display:none">
+	<!--<div class="row" id="mail_checker" >-->
+		<input type='text' id='mail_user' name='mail_user' style='width:50%;display:none;' placeholder='Enter your company mail'/>
+		<input type="button" class="btn btn-primary pull-left" id="get_mail" name="get_mail" value="Send Licence Request" style='width:40%;display:none;'/>
+		<input type="button" class="btn btn-primary pull-left" id="get_license" name="get_license" value="Get License"/>
+		<div id="status_mail" class="alert pull-left" style="display:none"></div>
+	</div>
+	<div class="row" id="license_checker" style="display:none;">
+	<!--<div class="row" id="license_checker" >-->
+		<input type='text' id='license_user' name='license_user' style='width:50%;display:none;' placeholder='Enter your license'/>
+		<input type="button" class="btn btn-primary pull-left" id="valide_license" name="valide_license" value="Validate Licence" style='width:40%;display:none;'/>
+		<input type="button" class="btn btn-primary pull-left" id="enter_license" name="enter_license" value="Enter License"/>
+		<div id="status_license" class="alert pull-left" style="display:none"></div>
+	</div>
+	<br/>
+	<div class="row">
+		
+		<a href="#" class="btn btn-primary pull-left" style="display:none;" id="save">Save</a>
+		<div id="status" class="alert pull-left">
+		</div>
+    </div>
+    <br/>
+    <hr>
+
+    <footer>
+        <p style="float:left;">&copy; <a id="author" href="https://elonet.fr/" target="_blank">Elonet</a> 2014</p>
+		<img src="https://elonet.fr/img/help.png" alt="help" width="50%" style="float:right;margin-top:-15px;"/>
+    </footer>
+
+</body>
+
+
+</html>

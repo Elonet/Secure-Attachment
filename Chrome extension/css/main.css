@@ -1,0 +1,114 @@
+#gmailr {
+    color: #333;
+    font-family: Arial;
+    background: #DDE5FF;
+    padding: 6px 7px 5px 9px;
+    border-bottom: 1px solid #C9D7F1;
+    margin-bottom: 1px;
+    position: relative;
+}
+
+.pull-left {
+    float: left;
+}
+
+.cloudy_invisible {
+    display: none !important;
+}
+
+.cloudy_visible {
+    display: "" !important;
+}
+
+.cloudy_icon_updatedview {
+    background-size: 21px 16px !important;
+    background-position: 0 0px !important;
+}
+
+.cloudy_updatedview_download {
+    background-color: whiteSmoke;
+    border: 1px solid gainsboro;
+    font-weight: bold;
+    margin: 10px;
+    padding: 4px 4px 4px 8px;
+}
+
+.cloudy_updatedview_download_wrapper {
+    display: inline-block;
+    max-width: 330px;
+    overflow: hidden;
+    padding: 3px 0;
+    text-overflow: ellipsis;
+    vertical-align: bottom;
+    white-space: nowrap;
+}
+
+.cloudy_updatedview_download_size {
+    color: #777;
+    display: inline-block;
+    padding: 3px 3px;
+}
+
+.cloudy_updatedview_download_statusicon {
+    /* background: url('//ssl.gstatic.com/ui/v1/icons/common/x_8px.png') no-repeat 0 0; */
+    cursor: pointer;
+    float: right;
+    height: 16px;
+    opacity: .5;
+    width: 16px;
+}
+
+.cloudy_updatedview_download_msg {
+    color: lightCoral;
+}
+
+div#cloudy_bubble {
+    width: 30%; 
+    min-width: 385px;
+    max-width: 500px;
+    position: fixed; 
+    background-color: white; 
+    top: 10px; 
+    z-index: 10; 
+    right: 1%; 
+    padding: 20px; 
+    border-top-left-radius: 20px; 
+    border-top-right-radius: 20px; 
+    border-bottom-right-radius: 20px; 
+    border-bottom-left-radius: 20px; 
+    font-family: 'helvetica neue'; 
+    border: 3px solid black; 
+    color: rgb(220, 20, 60);
+    color: black;
+    text-shadow: lightgrey 0px 1px 1px;
+    text-shadow: #eeeeee 0px 1px 1px;
+    display: none;
+    opacity: 0;
+}
+
+div#cloudy_bubble_close {
+    float: right;
+    cursor: pointer;
+    background: transparent;
+    opacity: 0.2;
+    font-size: 23px;
+    font-weight: bold;
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    border: 0;
+    -webkit-appearance: none;
+    text-shadow: 0 1px 0 #ffffff;
+    line-height: 0px;
+}
+
+div#cloudy_bubble_icon_container img {
+    margin: 0px 15px 0px 0px;
+}
+
+.bubble-text-container {
+    margin-right: 6%;
+}
+
+#bubble_head_paragraph h4{
+    margin-bottom: 1em;
+    margin-top: 0px;
+}
