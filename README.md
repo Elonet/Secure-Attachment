@@ -3,18 +3,6 @@
 <h2>Documentation</h2>
 <a href="https://elonet.fr/tech/doku.php?id=installation_web_server" target="_blank">General and setup documentation</a>
 
-<h2>Setup</h2>
-<ul>
-   <li><a href="https://elonet.fr/tech/doku.php?id=installation_web_server" target="_blank">How to setup the Distribution and correlation service on your website</a></li>
-   <li><a href="https://elonet.fr/tech/doku.php?id=installation_apps" target="_blank">How to setup the Visual service on your ubuntu server</a></li>
-</ul>
-
-<h2>Desktop browsers</h2>
-<p>The Browser plugin is regularly tested with the latest browser versions and supports the following minimal versions:</p>
-<ul>
-   <li>Google Chrome</li>
-</ul>
-
 <h2>Contributing</h2>
 <p><strong>Bug fixes</strong> and <strong>new features</strong> can be proposed using <a href="https://github.com/Elonet/Secure-Attachment/pulls" target="_blank">pull requests</a>.
    Please read the <a href="https://github.com/Elonet/Secure-Attachment/blob/master/CONTRIBUTING.md" target="_blank">contribution guidelines</a> before submitting a pull request.
