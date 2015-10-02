@@ -1,5 +1,8 @@
 <h1>Secure attachment</h1>
 
+<h2>Documentation</h2>
+<a href="https://elonet.fr/tech/doku.php?id=installation_web_server" target="_blank">General and setup documentation</a>
+
 <h2>Setup</h2>
 <ul>
    <li><a href="https://elonet.fr/tech/doku.php?id=installation_web_server" target="_blank">How to setup the Distribution and correlation service on your website</a></li>
